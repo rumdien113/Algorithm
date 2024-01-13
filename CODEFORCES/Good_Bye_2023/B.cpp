@@ -26,9 +26,21 @@ void indef(){
 	#endif
 }
 
+int t, a, b;
+
+void sol() {
+	cin >> a >> b;
+	if (b % a == 0)
+		cout << b*(b/a) << nl;
+	else
+		cout << b*(a/__gcd(a,b)) << nl;
+}
+
 int main() {
 	fast;
   	indef();
-
+  	cin >> t;
+  	while(t--)
+  		sol();
   	return 0;
 }
