@@ -14,7 +14,7 @@ using namespace std;
 #define vi vector<int>
 
 const int M = 1e9+7;
-const int N = 2e5+5;
+const int N = 1e5+5;
 
 int moveX[] = {0, 0, 1, -1};
 int moveY[] = {1, -1, 0, 0};
@@ -26,35 +26,18 @@ void indef(){
 	#endif
 }
 
-int t, n;
+int t, a, b;
 
-void sol() {
-	ll a[N], curr, cnt = 0, ans = 0;
-	cin >> n;
-	for (int i = 0; i < n; ++i) {
-		cin >> a[i];
-		if (a[i] == 0) cnt++;
-	}
-	if (n == 1) {
-		cout << "     ans = " << a[0] - 1 << nl;
-		return;
-	}
-	curr = 0;
-	for (int i = 1; i < n-1; ++i) {
-		if (a[i] != 0) {
-			ans += abs(a[curr] - a[i]);
-			cout << a[curr] << ' ' << a[i] << " => " << ans << nl;
-			curr = i;
-		} 
-	}
-	cout << "     ans = " << ans + cnt << nl;
-}
-	//chưa ACCCCCCCCCCCCCCCCCCCCCC
 int main() {
 	fast;
   	indef();
   	cin >> t;
-  	while(t--) 
-  		sol();
+  	while(t--) {
+  		cin >> a >> b;
+  		if ((2*a-b) % 3 == 0 && (2*a-b) >= 0 && (2*b-a) % 3 == 0 && (2*b-a) >= 0)
+  			cout << "YES" << nl;
+  		else
+  			cout << "NO" << nl;
+  	}
   	return 0;
 }
