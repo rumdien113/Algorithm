@@ -27,49 +27,40 @@ void indef(){
 	#endif
 }
 
-void show(ll a, ll b, ll c) {
-	ll sum = a + b + c;
-	cout << sum;
-	exit(0);
-}
+int t;
+string s;
 
-int n, x = 1, cnt = 1;
-ll ka = 10, kb = 10, kc = 10, a = 1, b = 1, c = 1;
+void sol() {
+	bool am;
+	cin >> s;
+	int hh = stoi(s.substr(0, 2));
+	int mm = stoi(s.substr(3, 2));
+	
+	if (hh == 0 && hh != 12) {
+        hh = 12;
+        cout << (hh < 10 ? "0" : "") << hh << ':' << (mm < 10 ? "0" : "") << mm << " AM" << endl;
+    } else if (hh == 12 && hh != 0) {
+        hh = 12;
+        cout << (hh < 10 ? "0" : "") << hh << ':' << (mm < 10 ? "0" : "") << mm << " PM" << endl;
+    } else if (hh < 12 && hh != 0) {
+        hh = hh; 
+        mm = mm;
+        cout << (hh < 10 ? "0" : "") << hh << ':' << (mm < 10 ? "0" : "") << mm << " AM" << endl;
+    } else if (hh > 12 && hh != 0) {
+        hh = hh - 12;
+        mm = mm;
+        cout << (hh < 10 ? "0" : "") << hh << ':' << (mm < 10 ? "0" : "") << mm << " PM" << endl;
+    }
+}
 
 int main() {
 	fast;
 	indef();
 	clock_t z = clock();
 
-	cin >> n;
-	if (n == 1) {
-		cout << 3;
-		exit(0);
-	}
-	// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-	while(cnt < n) {
-		a += ka;
-		cnt++;
-		// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-		if (cnt == n)	show(a, b, c);
-		while(b < a && cnt < n) {
-			b += kb;
-			cnt++;
-			// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-			if (cnt == n)	show(a, b, c);
-			while(c < b && cnt < n) {
-				c += kc;
-				cnt++;
-				kc *= 10;
-				// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-				if (cnt == n)	show(a, b, c);
-			}
-			kc = 10; c = 1;
-			kb *= 10;
-		}
-		kb = 10; b = 1;
-		ka *= 10;
-	}
+	cin >> t;
+	while (t--) 
+		sol();	
 
 	debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
 	return 0;

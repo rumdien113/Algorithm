@@ -27,48 +27,22 @@ void indef(){
 	#endif
 }
 
-void show(ll a, ll b, ll c) {
-	ll sum = a + b + c;
-	cout << sum;
-	exit(0);
-}
-
-int n, x = 1, cnt = 1;
-ll ka = 10, kb = 10, kc = 10, a = 1, b = 1, c = 1;
+int t, a, b, c;
 
 int main() {
 	fast;
 	indef();
 	clock_t z = clock();
 
-	cin >> n;
-	if (n == 1) {
-		cout << 3;
-		exit(0);
-	}
-	// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-	while(cnt < n) {
-		a += ka;
-		cnt++;
-		// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-		if (cnt == n)	show(a, b, c);
-		while(b < a && cnt < n) {
-			b += kb;
-			cnt++;
-			// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-			if (cnt == n)	show(a, b, c);
-			while(c < b && cnt < n) {
-				c += kc;
-				cnt++;
-				kc *= 10;
-				// cout << cnt << " : " << a << ' ' << b << ' ' << c << nl;
-				if (cnt == n)	show(a, b, c);
-			}
-			kc = 10; c = 1;
-			kb *= 10;
-		}
-		kb = 10; b = 1;
-		ka *= 10;
+	cin >> t;
+	while (t--) {
+		cin >> a >> b >> c;
+		if (a < b && b < c) {
+			cout << "STAIR" << nl;
+		} else if (b > a && b > c){
+			cout << "PEAK" << nl;
+		} else 
+			cout << "NONE" << nl;
 	}
 
 	debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
