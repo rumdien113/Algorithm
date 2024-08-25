@@ -54,7 +54,7 @@ int main() {
   		int u, v;
   		cin >> u >> v;
   		g[u].pb(v);
-  		g[v].pb(u);
+  		g[v].pb(u); 
   	}
   	p.push({0, s});
   	while(!p.empty()) {

@@ -7,6 +7,7 @@ using namespace std;
 #define st first
 #define nd second
 #define fast ios_base::sync_with_stdio(false);cout.tie(NULL);cin.tie(NULL);
+#define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define all(x) (x).begin(),(x).end()
 #define rall(x) (x).rbegin(),(x).rend()
 #define nl '\n'
@@ -26,32 +27,19 @@ void indef(){
 	#endif
 }
 
-int n, m, cnt = 0;
-bool visited[N];
-vi g[N];
-
-void dfs(int u) {
-	visited[u] = 1;
-	for (int i : g[u])
-		if (!visited[i])
-			dfs(i);
-}
-
+int r, g, b;
+string c;
+ 
 int main() {
 	fast;
-  	indef();
-  	cin >> n >> m;
-  	for (int i = 0; i < m; i++) {
-  		int u, v;
-  		cin >> u >> v;
-  		g[u].pb(v);
-        g[v].pb(u);
-  	}
-  	for (int i = 1; i <= n; i++)
-  		if (!visited[i]) {
-  			cnt++;
-  			dfs(i);	
-  		} 
-  	cout << cnt << nl;
+	indef();
+	clock_t z = clock();
+
+	cin >> r >> g >> b >> c;
+	if (c == "Red")			cout << min(g, b);
+	else if (c == "Green")	cout << min(r, b);
+	else if (c == "Blue")	cout << min(r, g);
+
+	debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
 	return 0;
 }

@@ -7,6 +7,7 @@ using namespace std;
 #define st first
 #define nd second
 #define fast ios_base::sync_with_stdio(false);cout.tie(NULL);cin.tie(NULL);
+#define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
 #define all(x) (x).begin(),(x).end()
 #define rall(x) (x).rbegin(),(x).rend()
 #define nl '\n'
@@ -15,43 +16,31 @@ using namespace std;
 
 const int M = 1e9+7;
 const int N = 1e5+5;
-
+const ll  P = 1e10;
 int moveX[] = {0, 0, 1, -1};
 int moveY[] = {1, -1, 0, 0};
 
 void indef(){
-	#ifndef ONLINE_JUDGE
-		freopen("input.txt","r",stdin);
-		freopen("output.txt","w",stdout);
-	#endif
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt","r",stdin);
+        freopen("output.txt","w",stdout);
+    #endif
 }
 
-int n, m, cnt = 0;
-bool visited[N];
-vi g[N];
-
-void dfs(int u) {
-	visited[u] = 1;
-	for (int i : g[u])
-		if (!visited[i])
-			dfs(i);
-}
+ll a, b, c, d;
 
 int main() {
-	fast;
-  	indef();
-  	cin >> n >> m;
-  	for (int i = 0; i < m; i++) {
-  		int u, v;
-  		cin >> u >> v;
-  		g[u].pb(v);
-        g[v].pb(u);
-  	}
-  	for (int i = 1; i <= n; i++)
-  		if (!visited[i]) {
-  			cnt++;
-  			dfs(i);	
-  		} 
-  	cout << cnt << nl;
-	return 0;
+    fast;
+    indef();
+    clock_t z = clock();
+
+    cin >> a >> b >> c >> d;
+    if (a > b) swap(a, b);
+    if (c > d) swap(c, d);
+
+    if (a*d == b*c) cout << "YES";
+    else cout << "NO";
+
+    debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
+    return 0;
 }
