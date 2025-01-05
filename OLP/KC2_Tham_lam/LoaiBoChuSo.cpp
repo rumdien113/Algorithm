@@ -34,7 +34,7 @@ int main() {
   	dp[0] = 0;
   	for (int i = 0; i <= n; i++) {
   		int tmp = i;
-  		while (tmp > 0) {
+	  		while (tmp > 0) {
   			dp[i] = min(dp[i], dp[i-tmp%10] + 1);
   			tmp /= 10;
   		}

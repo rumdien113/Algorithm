@@ -29,12 +29,13 @@ ll n, k, ans, a[N];
 int main() {
 	fast;
   	indef();
-  	cin >> n >> k >> ans;
-  	for (int i = 0; i < n-1; i++) cin >> a[i];
-  	sort(a, a+n-1, greater<ll>());
-  	for (int i = 0; i < n-1; i++) {
+  	cin >> n >> k;
+  	for (int i = 0; i < n; ++i) cin >> a[i];
+  	sort(a+1, a+n, greater<ll>());
+	ans = a[0];
+  	for (int i = 1; i < n; i++) {
   		if(k > 0){
-  			ans += a[i];
+  			ans += a[i];	
   			k--;
   		} else
   			ans -= a[i];
