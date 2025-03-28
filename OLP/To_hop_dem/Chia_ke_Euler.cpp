@@ -16,8 +16,8 @@ using namespace std;
 #define yes "Yes"
 #define no "No"
 
-const int M = 1e9+7;
-const int N = 1e5+5;
+const int MOD = 1e9+7;
+const int N = 2e6;
 
 int moveX[] = {0, 0, 1, -1};
 int moveY[] = {1, -1, 0, 0};
@@ -29,7 +29,7 @@ void indef(){
 #endif
 }
 
-ll t, p, n, k;
+ll t, n, k;
 ll fac[N + 1];
 ll inv[N + 1];
 
@@ -48,32 +48,30 @@ ll modulo(ll x, ll n, ll m) {
 void factorial() {
     fac[0] = 1;
     for (int i = 1; i <= N; ++i)
-        fac[i] = fac[i-1] * i % p;
+        fac[i] = fac[i-1] * i % MOD;
 }
 
 void inverse() {
-    inv[0] = 1;
-    inv[1] = 1;
-    inv[N] = modulo(fac[N], p-2, p);
+    inv[N] = modulo(fac[N], MOD-2, MOD);
     for (int i = N; i >= 1; --i)
-        inv[i-1] = inv[i] * i % p;
+        inv[i-1] = inv[i] * i % MOD;
 }
 
-ll binomial(ll n, ll r, ll p) {
-    return fac[n] * inv[r] % p * inv[n - r] % p;
+ll binomial(ll n, ll k) {
+    return fac[n+k-1] * inv[n] % MOD * inv[k-1] % MOD;
 }
 
 int main() {
     fast;
     indef();
     clock_t z = clock();
-
+    
     factorial();
     inverse();
-    cin >> t >> p;
+    cin >> t;
     while(t--) {
         cin >> n >> k;
-        cout << binomial(n, k, p) << nl;
+        cout << binomial(n, k) << nl;
     }
 
     debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
